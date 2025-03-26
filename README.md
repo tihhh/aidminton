@@ -65,9 +65,9 @@ Aidminton is a web application designed to help badminton players track and mana
 - `static/`: Static files (CSS, JavaScript, images)
 - `templates/`: HTML templates for the application
 
-## Assignment Context
+## Context
 
-This project was created as part of an academic assignment to demonstrate web application development skills using Flask and SQLite.
+This project was created as a challenge for me to develop a working Flask protoype of Aidminton for my friend
 
 ## License
 
