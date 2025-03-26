@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Sign Up{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <button type="button" class="back-button prev-step" data-current-step="{{ step }}">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+    <h1>Sign Up</h1>
+    {% if step < 3 %}
+    <button type="button" class="action-button next-step" data-current-step="{{ step }}">
+        Next
+    </button>
+    {% else %}
+    <button type="submit" form="signup-form" class="action-button">
+        Done
+    </button>
+    {% endif %}
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="progress-steps">
+    <div class="progress-step {% if step >= 1 %}active{% endif %}"></div>
+    <div class="progress-step {% if step >= 2 %}active{% endif %}"></div>
+    <div class="progress-step {% if step >= 3 %}active{% endif %}"></div>
+</div>
+
+<div class="form-container">
+    <form id="signup-form" method="POST" action="{{ url_for('signup') }}">
+        <input type="hidden" id="current-step" name="step" value="{{ step }}">
+        
+        <div id="step-1" class="step-div animate-fade-in" {% if step != 1 %}style="display: none;"{% endif %}>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" class="input-field" placeholder="Enter your full name" value="{{ name|default('') }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nickname">Nickname</label>
+                <input type="text" id="nickname" name="nickname" class="input-field" placeholder="Enter your nickname" value="{{ nickname|default('') }}" required>
+            </div>
+        </div>
+        
+        <div id="step-2" class="step-div animate-fade-in" {% if step != 2 %}style="display: none;"{% endif %}>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="input-field" placeholder="Enter your email" value="{{ email|default('') }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-input-container">
+                    <input type="password" id="password" name="password" class="input-field" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-password">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm_password" class="input-field" placeholder="Confirm your password" required>
+            </div>
+        </div>
+        
+        <div id="step-3" class="step-div animate-fade-in" {% if step != 3 %}style="display: none;"{% endif %}>
+            <div class="form-group">
+                <label for="phone-number">Phone Number</label>
+                <input type="tel" id="phone-number" name="phone_number" class="input-field" placeholder="Enter your phone number" required>
+            </div>
+            
+            <button type="submit" class="button-primary" style="margin-top: 2rem;">Create Account</button>
+        </div>
+        
+        <!-- Carry forward values from previous steps -->
+        {% if step > 1 %}
+        <input type="hidden" name="name" value="{{ name|default('') }}">
+        <input type="hidden" name="nickname" value="{{ nickname|default('') }}">
+        {% endif %}
+        
+        {% if step > 2 %}
+        <input type="hidden" name="email" value="{{ email|default('') }}">
+        <input type="hidden" name="password" value="{{ password|default('') }}">
+        <input type="hidden" name="confirm_password" value="{{ confirm_password|default('') }}">
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

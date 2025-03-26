@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AIDMINTON{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="mobile-container">
+        {% block header %}{% endblock %}
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %}
+        
+        {% block footer %}
+        {% if session.user_id %}
+        <nav class="mobile-navbar">
+            <a href="{{ url_for('index') }}" class="nav-item {% if request.path == url_for('index') %}active{% endif %}">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="{{ url_for('injuries') }}" class="nav-item {% if request.path == url_for('injuries') %}active{% endif %}">
+                <i class="fas fa-ambulance"></i>
+                <span>Injuries</span>
+            </a>
+            <a href="{{ url_for('injury_log') }}" class="nav-item {% if request.path == url_for('injury_log') %}active{% endif %}">
+                <i class="fas fa-notes-medical"></i>
+                <span>Log</span>
+            </a>
+            <a href="{{ url_for('medical_experts') }}" class="nav-item {% if request.path == url_for('medical_experts') %}active{% endif %}">
+                <i class="fas fa-user-md"></i>
+                <span>Experts</span>
+            </a>
+            <a href="{{ url_for('profile') }}" class="nav-item {% if request.path == url_for('profile') %}active{% endif %}">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+        {% endif %}
+        {% endblock %}
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

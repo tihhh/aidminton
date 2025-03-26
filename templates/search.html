@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Search{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <a href="{{ url_for('index') }}" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+    <h1>Search</h1>
+    <div style="width: 24px;"></div>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="search-container">
+    <form action="{{ url_for('search') }}" method="GET">
+        <div class="search-input-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" name="q" class="search-input" placeholder="Search injuries, symptoms, experts..." value="{{ query }}">
+        </div>
+    </form>
+</div>
+
+<div class="form-container animate-fade-in">
+    {% if query %}
+    {% if results and (results.injuries or results.experts) %}
+    
+    {% if results.injuries %}
+    <h3 style="margin: 1rem 0;">Injuries</h3>
+    {% for injury in results.injuries %}
+    <div class="card">
+        <h2 class="card-title">{{ injury.title }}</h2>
+        <p class="card-content">{{ injury.description }}</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: var(--primary-color); text-decoration: none;">Read more →</a>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% if results.experts %}
+    <h3 style="margin: 1rem 0;">Medical Experts</h3>
+    {% for expert in results.experts %}
+    <div class="card">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 60px; height: 60px; background-color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                <i class="fas fa-user-md" style="font-size: 1.5rem;"></i>
+            </div>
+            <div>
+                <h2 class="card-title">{{ expert.name }}</h2>
+                <p style="color: var(--gray-medium);">{{ expert.specialty }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% else %}
+    <div style="text-align: center; padding: 3rem 0;">
+        <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-medium); margin-bottom: 1rem;"></i>
+        <p>No results found for "{{ query }}"</p>
+    </div>
+    {% endif %}
+    {% else %}
+    <div style="text-align: center; padding: 3rem 0;">
+        <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-medium); margin-bottom: 1rem;"></i>
+        <p>Try searching for injuries, symptoms, or medical experts</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

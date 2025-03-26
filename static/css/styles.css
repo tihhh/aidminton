@@ -1,0 +1,385 @@
+:root {
+    --primary-color: #105c7c;
+    --secondary-color: #0e4e69;
+    --tertiary-color: #0c4057;
+    --background-color: #f2f2f2;
+    --text-color: #333333;
+    --light-text: #555555;
+    --accent-color: #3a96b8;
+    --error-color: #ea384c;
+    --success-color: #34D399;
+    --warning-color: #F97316;
+    --gray-light: #f5f5f5;
+    --gray-medium: #8E9196;
+    --gray-dark: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+/* Container */
+.mobile-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-header h1 {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+.back-button, .action-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover, .action-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Progress Steps */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 1rem;
+}
+
+.progress-step {
+    height: 0.25rem;
+    flex: 1;
+    margin: 0 0.25rem;
+    border-radius: 9999px;
+    background-color: rgba(151, 151, 151, 0.2);
+    transition: background-color 0.3s;
+}
+
+.progress-step.active {
+    background-color: rgb(0, 0, 0);
+}
+
+/* Forms */
+.form-container {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.input-field::placeholder {
+    color: var(--gray-medium);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(16, 92, 124, 0.2);
+}
+
+.password-input-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Buttons */
+.button-primary {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.button-primary:disabled {
+    background-color: var(--gray-medium);
+    cursor: not-allowed;
+}
+
+.button-secondary {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #4db8ff;
+    color: rgb(255, 255, 255);
+    border: 1px solid var(--primary-color);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button-secondary:hover {
+    background-color: rgba(155, 135, 245, 0.1);
+}
+
+/* Footer Navigation */
+.mobile-navbar {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.nav-item.active {
+    color: white;
+    font-weight: bold;
+}
+
+.nav-item i {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Cards */
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eaeaea;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.card-content {
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+.pain-badge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.date-text {
+    color: var(--gray-medium);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Alerts */
+.flash-messages {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.alert-success {
+    background-color: rgba(52, 211, 153, 0.1);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.alert-error {
+    background-color: rgba(234, 56, 76, 0.1);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+}
+
+.alert-info {
+    background-color: rgba(14, 165, 233, 0.1);
+    border: 1px solid #0EA5E9;
+    color: #0EA5E9;
+}
+
+/* Search */
+.search-container {
+    padding: 1rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 1rem;
+    padding-left: 2.5rem;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray-medium);
+}
+
+/* Pain scale */
+.pain-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.pain-level {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--gray-light);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pain-level:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.pain-level.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Pain levels color gradient */
+.pain-level[data-value="1"],
+.pain-level[data-value="2"] {
+    background-color: #e6f7ff;
+}
+
+.pain-level[data-value="3"],
+.pain-level[data-value="4"] {
+    background-color: #b3e0ff;
+}
+
+.pain-level[data-value="5"],
+.pain-level[data-value="6"] {
+    background-color: #4db8ff;
+}
+
+.pain-level[data-value="7"],
+.pain-level[data-value="8"] {
+    background-color: #0080ff;
+}
+
+.pain-level[data-value="9"],
+.pain-level[data-value="10"] {
+    background-color: #004d99;
+}
+
+.pain-level.active {
+    background-color: var(--primary-color);
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+/* Animation classes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+}

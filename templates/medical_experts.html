@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Medical Experts{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <h1>Medical Experts</h1>
+    <a href="{{ url_for('search') }}" class="action-button">
+        <i class="fas fa-search"></i>
+    </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="form-container animate-fade-in">
+    {% for expert in experts %}
+    <div class="card">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 1rem;">
+                <img src="{{ expert.image_path }}" alt="{{ expert.name }}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+                <h2 class="card-title">{{ expert.name }}</h2>
+                <p style="color: var(--gray-medium);">{{ expert.specialty }}</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem;">
+            <p><i class="fas fa-hospital" style="margin-right: 0.5rem;"></i> {{ expert.hospital }}</p>
+            <p><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> {{ expert.contact }}</p>
+        </div>
+    </div>
+    {% else %}
+    <div class="card">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 1rem;">
+                <img src="/static/images/doctor1.png" alt="Dr. MEI" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+                <h2 class="card-title">Dr. MEI</h2>
+                <p style="color: var(--gray-medium);">General Practitioner</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem;">
+            <p><i class="fas fa-hospital" style="margin-right: 0.5rem;"></i> RS Moth</p>
+            <p><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +628123456789</p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 1rem;">
+                <img src="/static/images/doctor2.jpg" alt="House, MD" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+                <h2 class="card-title">House, MD</h2>
+                <p style="color: var(--gray-medium);">Orthopedic Surgery</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem;">
+            <p><i class="fas fa-hospital" style="margin-right: 0.5rem;"></i> Princeton Plainsboro Teaching Hospital</p>
+            <p><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +1-555-345-6789</p>
+        </div>
+    </div>
+    
+    <div class="card">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-right: 1rem;">
+                <img src="/static/images/doctor3.png" alt="Dr. Shaun Murphy" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div>
+                <h2 class="card-title">Dr. Shaun Murphy</h2>
+                <p style="color: var(--gray-medium);">Physical Therapy</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem;">
+            <p><i class="fas fa-hospital" style="margin-right: 0.5rem;"></i> San Jose St. Bonaventure Hospital</p>
+            <p><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +1-333-333-3333</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

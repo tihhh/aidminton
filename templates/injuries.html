@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Common Injuries{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <h1>Common Injuries</h1>
+    <a href="{{ url_for('search') }}" class="action-button">
+        <i class="fas fa-search"></i>
+    </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="form-container animate-fade-in">
+    {% for injury in injuries %}
+    <div class="card">
+        <h2 class="card-title">{{ injury.title }}</h2>
+        <p class="card-content">{{ injury.description }}</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: var(--primary-color); text-decoration: none;">Read more →</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="card">
+        <h2 class="card-title">Ankle Sprain</h2>
+        <p class="card-content">An injury that occurs when you roll, twist or turn your ankle in an awkward way, causing the ligaments to stretch or tear.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: var(--primary-color); text-decoration: none;">Read more →</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 class="card-title">Tennis Elbow</h2>
+        <p class="card-content">Inflammation of the tendons that join the forearm muscles to the outside of the elbow, often caused by overuse or repetitive motions.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: var(--primary-color); text-decoration: none;">Read more →</a>
+        </div>
+    </div>
+    
+    <div class="card">
+        <h2 class="card-title">Knee Strain</h2>
+        <p class="card-content">Stretched or torn ligaments, tendons, or muscles that support the knee, often resulting from sudden twisting movements.</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: var(--primary-color); text-decoration: none;">Read more →</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

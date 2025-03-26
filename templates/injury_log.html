@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Injury Log{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <h1>Injury Log</h1>
+    <a href="{{ url_for('add_injury') }}" class="action-button">
+        <i class="fas fa-plus"></i>
+    </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="form-container animate-fade-in">
+    {% if injuries %}
+    {% for injury in injuries %}
+    <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h2 class="card-title">{{ injury.title }}</h2>
+            <span class="pain-badge">Pain: {{ injury.pain_level }}/10</span>
+        </div>
+        <p class="date-text">{{ injury.date }}</p>
+        <p class="card-content">{{ injury.description }}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div style="text-align: center; padding: 3rem 0;">
+        <i class="fas fa-clipboard-list" style="font-size: 3rem; color: var(--gray-medium); margin-bottom: 1rem;"></i>
+        <p>No injury logs yet</p>
+        <a href="{{ url_for('add_injury') }}" class="button-primary" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Add Your First Log</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

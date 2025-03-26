@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}AIDMINTON - Home{% endblock %}
+
+{% block header %}
+<header class="app-header">
+    <h1>AIDMINTON</h1>
+    <a href="{{ url_for('search') }}" class="action-button">
+        <i class="fas fa-search"></i>
+    </a>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="form-container animate-fade-in">
+    {% if session.user_id %}
+    <div class="card">
+        <h2 class="card-title">Welcome back, {{ session.user_nickname }}!</h2>
+        <p class="card-content">Track your badminton injuries and get expert advice.</p>
+    </div>
+    
+    <h3 style="margin: 1.5rem 0 1rem 0">Quick Actions</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <a href="{{ url_for('add_injury') }}" style="text-decoration: none;">
+            <div class="card" style="text-align: center; height: 100%;">
+                <i class="fas fa-plus-circle" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                <p>Log New Injury</p>
+            </div>
+        </a>
+        <a href="{{ url_for('injuries') }}" style="text-decoration: none;">
+            <div class="card" style="text-align: center; height: 100%;">
+                <i class="fas fa-book-medical" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                <p>Browse Injuries</p>
+            </div>
+        </a>
+        <a href="{{ url_for('medical_experts') }}" style="text-decoration: none;">
+            <div class="card" style="text-align: center; height: 100%;">
+                <i class="fas fa-user-md" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                <p>Find Experts</p>
+            </div>
+        </a>
+        <a href="{{ url_for('injury_log') }}" style="text-decoration: none;">
+            <div class="card" style="text-align: center; height: 100%;">
+                <i class="fas fa-clipboard-list" style="font-size: 2rem; color: var(--primary-color); margin-bottom: 0.5rem;"></i>
+                <p>View My Logs</p>
+            </div>
+        </a>
+    </div>
+    {% else %}
+    <div style="text-align: center; padding: 3rem 0;">
+        <h1 style="font-size: 2rem; margin-bottom: 1rem;">AIDMINTON</h1>
+        <p style="margin-bottom: 2rem; color: var(--gray-light);">Your badminton injury assistant</p>
+        
+        <a href="{{ url_for('login') }}" class="button-primary" style="display: block; margin-bottom: 1rem; text-decoration: none;">Log In</a>
+        <a href="{{ url_for('signup') }}" class="button-secondary" style="display: block; text-decoration: none;">Sign Up</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
